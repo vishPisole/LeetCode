@@ -1,0 +1,24 @@
+#include <math.h>
+class Solution {
+public:
+    long long sumAndMultiply(int n) {
+        long long ans = 0;
+        long long sum = 0;
+        int place = 0;
+
+        while(n != 0)
+        {
+            if(n%10 != 0)
+            {
+                ans = ((n%10) * pow(10,place)) + ans;
+                ++place;
+            }
+            //cout << place << "--"<< sum << "--"<< ans << "--" << endl;
+
+            sum += n%10;
+            n /= 10;
+        }
+
+        return ans*sum;
+    }
+};
