@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool isReachableAtTime(int sx, int sy, int fx, int fy, int t) {
+        
+        int dist = max(abs(fx-sx), abs(fy-sy));
+
+        if(dist == 0)
+            return t!=1;
+        
+        return dist <= t;
+
+        // Commented as found better solution
+        // if(sx != fx)
+        // {
+        //     if(abs(fx-sx) >= abs(fy-sy))
+        //         return (abs(fx-sx) > t) ? false : true;
+        //     else
+        //         return (abs(fy-sy) > t) ? false : true;
+        // }
+        // else
+        // {
+        //     if(sy != fy)
+        //         return (abs(fy-sy) > t) ? false : true;
+        //     else
+        //         return t==1 ? false : true;
+        // }
+
+
+    }
+};
