@@ -1,0 +1,37 @@
+class Solution {
+public:
+
+    // void fillRes(vector<int>& res, int sumNeeded, int lb, int ub)
+    // {
+    //     if(lb > ub)
+    //         return;
+    //     if(lb == ub)
+    //         res.push_back(sumNeeded);
+    //     else
+    //     {
+    //         fillRes(res, sumNeeded/2, lb, lb+((ub-lb)/2));
+    //         fillRes(res, sumNeeded-(sumNeeded/2), lb+((ub-lb)/2)+1, ub);
+    //     }
+    // }
+
+    vector<int> missingRolls(vector<int>& rolls, int mean, int n) {
+        int rollsSum = 0;
+        for(int roll : rolls)
+            rollsSum += roll;
+            
+        int sumNeeded = (mean*(rolls.size()+n)) - rollsSum;
+
+        if((float)sumNeeded / 6 > (float)n || sumNeeded < n)
+            return {};
+        
+        //fillRes(res, sumNeeded, 1, n);
+        int rem = sumNeeded % n;
+        int q = sumNeeded / n;
+
+        vector<int> res(n,q);
+        for(int i = 1; i <= rem; ++i)
+            res[i]++;
+
+        return res;
+    }
+};
